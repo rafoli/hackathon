@@ -29,7 +29,11 @@
 		if ((pdfFiles != null) && (pdfFiles.length > 0)) {
 		for (File pdfFile : pdfFiles) {
 	%>
-	<tr><td ><%= pdfFile.getName()%></td><td><%= new Date(pdfFile.lastModified())%></td></tr>
+	<portlet:resourceURL id="/fetch_pdf" var="fetchPdf" >
+		<portlet:param name="name" value="<%= pdfFile.getName() %>" />
+	</portlet:resourceURL>
+
+	<tr><td ><a href="<%= fetchPdf %>"><%= pdfFile.getName()%></a></td><td><%= new Date(pdfFile.lastModified())%></td></tr>
 	<%
 
 		}
