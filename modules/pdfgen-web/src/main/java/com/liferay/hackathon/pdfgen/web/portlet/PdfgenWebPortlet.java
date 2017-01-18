@@ -17,7 +17,7 @@ import java.io.IOException;
 	immediate = true,
 	property = {
 		"com.liferay.portlet.display-category=category.sample",
-		"com.liferay.portlet.instanceable=true",
+		"com.liferay.portlet.instanceable=false",
 		"javax.portlet.display-name=pdfgen-web Portlet",
 		"javax.portlet.name=" + GeneratePdfsPortletKeys.GENERATE_PDFS,
 		"javax.portlet.init-param.template-path=/",

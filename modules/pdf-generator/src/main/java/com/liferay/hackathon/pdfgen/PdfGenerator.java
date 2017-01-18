@@ -4,8 +4,11 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.html.simpleparser.HTMLWorker;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.FileUtil;
 import com.liferay.portal.kernel.util.StringUtil;
+import org.osgi.service.component.annotations.Component;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -18,7 +21,12 @@ import java.io.StringReader;
 /**
  * Created by dnebinger on 1/18/17.
  */
+@Component(
+		immediate = true,
+		service = PdfGenerator.class
+)
 public class PdfGenerator {
+	private static final Log _log = LogFactoryUtil.getLog(PdfGenerator.class);
 
 	public void generatePdfs(final String html, final String path, final int count) {
 
@@ -26,7 +34,7 @@ public class PdfGenerator {
 		try {
 			FileUtil.mkdirs(dir);
 		} catch (IOException e) {
-			// ignored
+			_log.error("Error making directories: " + e.getMessage(), e);
 		}
 
 		for (int idx = 1; idx <= count; idx++) {
@@ -50,7 +58,7 @@ public class PdfGenerator {
 			document.close();
 			file.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			_log.error("Error generating pdf: " + e.getMessage(), e);
 		}
 	}
 }
