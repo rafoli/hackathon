@@ -3,3 +3,19 @@ Bundle-Name: PDF Generator
 Bundle-Version: 1.0.0
 
 Export-Package: com.liferay.hackathon.pdfgen
+
+Bundle-ClassPath:\
+  .,\
+  lib/itextpdf.jar,\
+  lib/xmlworker.jar,\
+  lib/xmlsec.jar
+
+-includeresource:\
+  lib/itextpdf.jar=itextpdf-5.5.10.jar,\
+  lib/xmlworker.jar=xmlworker-5.5.10.jar,\
+  lib/xmlsec.jar=xmlsec-1.5.1.jar
+
+Import-Package: !org.bouncycastle.asn1, \
+ !org.bouncycastle.*, \
+ *
+
