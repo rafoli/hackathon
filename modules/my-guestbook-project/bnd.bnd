@@ -1,0 +1,3 @@
+Bundle-Name: my-guestbook-project
+Bundle-SymbolicName: com.liferay.docs.guestbook
+Bundle-Version: 1.0.0
