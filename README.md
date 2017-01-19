@@ -1,3 +1,3 @@
-# ReAL - Real Accessbility in Liferay
+# ReAL - Real Accessibility in Liferay
 
 ## hackathon
