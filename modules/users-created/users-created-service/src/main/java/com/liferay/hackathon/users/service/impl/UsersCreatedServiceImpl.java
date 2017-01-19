@@ -21,6 +21,7 @@ import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQueryFactory;
 import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
 import com.liferay.portal.kernel.dao.orm.PropertyFactoryUtil;
+import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.User;
@@ -115,7 +116,8 @@ public class UsersCreatedServiceImpl extends UsersCreatedServiceBaseImpl {
 		DynamicQuery dq = DynamicQueryFactoryUtil.forClass(User.class, PortalClassLoaderUtil.getClassLoader());
 
 		// now we want to find users since the given date
-		dq.add(PropertyFactoryUtil.forName("createDate").gt(since));
+		// dq.add(PropertyFactoryUtil.forName("createDate").gt(since));
+		dq.add(RestrictionsFactoryUtil.between("createDate", since, new Date()));
 
 		// should be it, now we can get the count?
 		long count = 0;
