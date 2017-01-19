@@ -1,3 +1,20 @@
+
+*.env
+
+# Serverless
+.serverless
+
+# Ionic
+platforms/
+plugins/
+
+event.json
+context.json
+node_modules/
+build/
+npm-debug.log
+.DS_Store
+
 **/*.pdf
 .DS_Store
 **/*.iml
