@@ -1,0 +1,7 @@
+Bundle-SymbolicName: timesheet-api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.timesheet.exception,\
+	com.liferay.timesheet.model,\
+	com.liferay.timesheet.service,\
+	com.liferay.timesheet.service.persistence

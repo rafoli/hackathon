@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<hint-collection name="CLOB">
+		<hint name="max-length">2000000</hint>
+	</hint-collection>
+	<hint-collection name="MESSAGE">
+		<hint name="max-length">4000</hint>
+	</hint-collection>
+	<hint-collection name="NAME">
+		<hint name="max-length">400</hint>
+	</hint-collection>
+	<model name="com.liferay.timesheet.model.Client">
+		<field name="clientId" type="long" />
+		<field name="name" type="String">
+			<hint-collection name="NAME" />
+		</field>
+	</model>
+	<model name="com.liferay.timesheet.model.Project">
+		<field name="projectId" type="long" />
+		<field name="clientId" type="long" />
+		<field name="name" type="String">
+			<hint-collection name="NAME" />
+		</field>
+		<field name="startsOn" type="Date" />
+		<field name="endsOn" type="Date" />
+	</model>
+	<model name="com.liferay.timesheet.model.Task">
+		<field name="taskId" type="long" />
+		<field name="name" type="String" />
+		<field name="projectId" type="long" />
+	</model>
+	<model name="com.liferay.timesheet.model.TimeEntry">
+		<field name="timeEntryId" type="long" />
+		<field name="userId" type="long" />
+		<field name="hours" type="Double" />
+		<field name="projectId" type="long" />
+		<field name="taskId" type="long" />
+		<field name="billable" type="boolean" />
+		<field name="timesheetId" type="long" />
+		<field name="onDate" type="Date" />
+		<field name="message" type="String">
+			<hint-collection name="MESSAGE" />
+		</field>
+	</model>
+	<model name="com.liferay.timesheet.model.Timesheet">
+		<field name="timesheetId" type="long" />
+		<field name="dateFrom" type="Date" />
+		<field name="userId" type="long" />
+		<field name="dateTo" type="Date" />
+		<field name="approved" type="boolean" />
+		<field name="open" type="boolean" />
+		<field name="submittedOn" type="Date" />
+		<field name="approvedOn" type="Date" />
+	</model>
+</model-hints>
