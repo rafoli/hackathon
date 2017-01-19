@@ -16,7 +16,10 @@ package com.liferay.timesheet.service.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.timesheet.model.Project;
 import com.liferay.timesheet.service.base.ProjectServiceBaseImpl;
+
+import java.util.Date;
 
 /**
  * The implementation of the project remote service.
@@ -39,4 +42,10 @@ public class ProjectServiceImpl extends ProjectServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.timesheet.service.ProjectServiceUtil} to access the project remote service.
 	 */
+
+	public String addProject(final String name) {
+		Project project = projectLocalService.addProject(0, name, new Date(), new Date());
+
+		return "Added project id " + project.getProjectId();
+	}
 }

@@ -1,6 +1,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.liferay.timesheet.model.Client" %>
 <%@ page import="com.liferay.portal.kernel.util.GetterUtil" %>
+<%@ page import="com.liferay.portal.kernel.dao.orm.QueryUtil" %>
+<%@ page import="com.liferay.timesheet.model.TimeEntry" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ include file="/init.jsp" %>
 
 <p>
@@ -77,6 +80,29 @@
 		</aui:fieldset>
 	</aui:fieldset-group>
 </aui:form>
+
 <%
+	List<TimeEntry> time = _timeEntryLocalService.getTimeEntries(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+
+	if ((time != null) && (! time.isEmpty())) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+		%>
+<table class="table table-striped">
+	<thead>
+		<tr><th>Hours</th><th>Date</th><th>Message</th></tr>
+	</thead>
+	<tbody>
+
+	<%
+		for (TimeEntry entry : time) {
+	%>
+		<tr><td><%= entry.getHours() %></td><td><%= sdf.format(entry.getOnDate()) %></td><td><%= entry.getMessage() %></td></tr>
+	<%
+		}
+	%>
+	</tbody>
+</table>
+<%
+		}
 	}
 %>
