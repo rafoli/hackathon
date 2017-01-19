@@ -8,7 +8,7 @@
 </portlet:actionURL>
 
 <script type="text/JavaScript">
-    setTimeout("location.reload(true);",5000);
+    setTimeout("location.reload(true);",10000);
 </script>
 
 <div onload="timer = setTimeout('auto_reload()',10000);">
