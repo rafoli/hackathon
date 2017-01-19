@@ -41,7 +41,7 @@ public class ClientLocalServiceImpl extends ClientLocalServiceBaseImpl {
 	 * Never reference this class directly. Always use {@link com.liferay.timesheet.service.ClientLocalServiceUtil} to access the client local service.
 	 */
 
-	Client addClient(final String name) {
+	public Client addClient(final String name) {
 		Client client = createClient(counterLocalService.increment(Client.class.getName()));
 
 		client.setName(name);

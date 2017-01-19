@@ -89,6 +89,8 @@ public interface ClientLocalService extends BaseLocalService,
 	@Indexable(type = IndexableType.REINDEX)
 	public Client addClient(Client client);
 
+	public Client addClient(java.lang.String name);
+
 	/**
 	* Creates a new client with the primary key. Does not add the client to the database.
 	*

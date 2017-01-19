@@ -1,5 +1,6 @@
 package com.liferay.hackathon.timesheet.portlet;
 
+import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 
 import javax.portlet.Portlet;
@@ -7,6 +8,8 @@ import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
+import com.liferay.timesheet.model.Client;
+import com.liferay.timesheet.model.Project;
 import com.liferay.timesheet.model.Timesheet;
 import com.liferay.timesheet.service.ClientLocalService;
 import com.liferay.timesheet.service.ProjectLocalService;
@@ -17,6 +20,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 import java.io.IOException;
+import java.util.List;
 
 @Component(
 	immediate = true,
@@ -36,6 +40,16 @@ public class TimesheetWebPortlet extends MVCPortlet {
 
 	@Override
 	public void render(RenderRequest renderRequest, RenderResponse renderResponse) throws IOException, PortletException {
+
+		List<Client> clients = _clientLocalService.getClients(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+		if ((clients != null) && (! clients.isEmpty())) {
+			renderRequest.setAttribute("clientId", clients.get(0).getClientId());
+		}
+
+		List<Project> projects = _projectLocalService.getProjects(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+		if ((projects != null) && (! projects.isEmpty())) {
+			renderRequest.setAttribute("projectId", projects.get(0).getProjectId());
+		}
 
 		renderRequest.setAttribute(Constants.ATTRIB_CLIENT_LOCAL_SERVICE, _clientLocalService);
 		renderRequest.setAttribute(Constants.ATTRIB_PROJECT_LOCAL_SERVICE, _projectLocalService);

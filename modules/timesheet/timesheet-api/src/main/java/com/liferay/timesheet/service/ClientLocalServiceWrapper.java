@@ -76,6 +76,11 @@ public class ClientLocalServiceWrapper implements ClientLocalService,
 		return _clientLocalService.addClient(client);
 	}
 
+	@Override
+	public com.liferay.timesheet.model.Client addClient(java.lang.String name) {
+		return _clientLocalService.addClient(name);
+	}
+
 	/**
 	* Creates a new client with the primary key. Does not add the client to the database.
 	*
