@@ -1,0 +1,7 @@
+Bundle-SymbolicName: users.created-api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.hackathon.users.exception,\
+	com.liferay.hackathon.users.model,\
+	com.liferay.hackathon.users.service,\
+	com.liferay.hackathon.users.service.persistence
