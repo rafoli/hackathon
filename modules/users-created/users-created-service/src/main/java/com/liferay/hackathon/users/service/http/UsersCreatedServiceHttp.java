@@ -134,11 +134,90 @@ public class UsersCreatedServiceHttp {
 		}
 	}
 
+	public static java.lang.String getUsersAddedInLastMinute(
+		HttpPrincipal httpPrincipal) {
+		try {
+			MethodKey methodKey = new MethodKey(UsersCreatedServiceUtil.class,
+					"getUsersAddedInLastMinute",
+					_getUsersAddedInLastMinuteParameterTypes3);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				throw new com.liferay.portal.kernel.exception.SystemException(e);
+			}
+
+			return (java.lang.String)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
+	public static java.lang.String getUsersCount(HttpPrincipal httpPrincipal) {
+		try {
+			MethodKey methodKey = new MethodKey(UsersCreatedServiceUtil.class,
+					"getUsersCount", _getUsersCountParameterTypes4);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				throw new com.liferay.portal.kernel.exception.SystemException(e);
+			}
+
+			return (java.lang.String)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
+	public static java.lang.String getUsersAddedInLastXMinutes(
+		HttpPrincipal httpPrincipal, int minutes) {
+		try {
+			MethodKey methodKey = new MethodKey(UsersCreatedServiceUtil.class,
+					"getUsersAddedInLastXMinutes",
+					_getUsersAddedInLastXMinutesParameterTypes5);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey, minutes);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				throw new com.liferay.portal.kernel.exception.SystemException(e);
+			}
+
+			return (java.lang.String)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
 	public static java.lang.String getUsersAddedSince(
 		HttpPrincipal httpPrincipal, java.lang.String since) {
 		try {
 			MethodKey methodKey = new MethodKey(UsersCreatedServiceUtil.class,
-					"getUsersAddedSince", _getUsersAddedSinceParameterTypes3);
+					"getUsersAddedSince", _getUsersAddedSinceParameterTypes6);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey, since);
 
@@ -164,7 +243,7 @@ public class UsersCreatedServiceHttp {
 		HttpPrincipal httpPrincipal, java.util.Date since) {
 		try {
 			MethodKey methodKey = new MethodKey(UsersCreatedServiceUtil.class,
-					"getUsersAddedSince", _getUsersAddedSinceParameterTypes4);
+					"getUsersAddedSince", _getUsersAddedSinceParameterTypes7);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey, since);
 
@@ -196,10 +275,17 @@ public class UsersCreatedServiceHttp {
 	private static final Class<?>[] _getUsersAddedInLastHourParameterTypes2 = new Class[] {
 			
 		};
-	private static final Class<?>[] _getUsersAddedSinceParameterTypes3 = new Class[] {
+	private static final Class<?>[] _getUsersAddedInLastMinuteParameterTypes3 = new Class[] {
+			
+		};
+	private static final Class<?>[] _getUsersCountParameterTypes4 = new Class[] {  };
+	private static final Class<?>[] _getUsersAddedInLastXMinutesParameterTypes5 = new Class[] {
+			int.class
+		};
+	private static final Class<?>[] _getUsersAddedSinceParameterTypes6 = new Class[] {
 			java.lang.String.class
 		};
-	private static final Class<?>[] _getUsersAddedSinceParameterTypes4 = new Class[] {
+	private static final Class<?>[] _getUsersAddedSinceParameterTypes7 = new Class[] {
 			java.util.Date.class
 		};
 }

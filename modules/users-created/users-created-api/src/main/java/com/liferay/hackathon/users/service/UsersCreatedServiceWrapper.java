@@ -53,8 +53,18 @@ public class UsersCreatedServiceWrapper implements UsersCreatedService,
 	}
 
 	@Override
+	public java.lang.String getUsersAddedInLastMinute() {
+		return _usersCreatedService.getUsersAddedInLastMinute();
+	}
+
+	@Override
 	public java.lang.String getUsersAddedInLastWeek() {
 		return _usersCreatedService.getUsersAddedInLastWeek();
+	}
+
+	@Override
+	public java.lang.String getUsersAddedInLastXMinutes(int minutes) {
+		return _usersCreatedService.getUsersAddedInLastXMinutes(minutes);
 	}
 
 	@Override
@@ -65,6 +75,11 @@ public class UsersCreatedServiceWrapper implements UsersCreatedService,
 	@Override
 	public java.lang.String getUsersAddedSince(java.util.Date since) {
 		return _usersCreatedService.getUsersAddedSince(since);
+	}
+
+	@Override
+	public java.lang.String getUsersCount() {
+		return _usersCreatedService.getUsersCount();
 	}
 
 	@Override

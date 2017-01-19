@@ -58,8 +58,16 @@ public class UsersCreatedServiceUtil {
 		return getService().getUsersAddedInLastHour();
 	}
 
+	public static java.lang.String getUsersAddedInLastMinute() {
+		return getService().getUsersAddedInLastMinute();
+	}
+
 	public static java.lang.String getUsersAddedInLastWeek() {
 		return getService().getUsersAddedInLastWeek();
+	}
+
+	public static java.lang.String getUsersAddedInLastXMinutes(int minutes) {
+		return getService().getUsersAddedInLastXMinutes(minutes);
 	}
 
 	public static java.lang.String getUsersAddedSince(java.lang.String since) {
@@ -68,6 +76,10 @@ public class UsersCreatedServiceUtil {
 
 	public static java.lang.String getUsersAddedSince(java.util.Date since) {
 		return getService().getUsersAddedSince(since);
+	}
+
+	public static java.lang.String getUsersCount() {
+		return getService().getUsersCount();
 	}
 
 	public static UsersCreatedService getService() {
