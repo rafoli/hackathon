@@ -4,6 +4,7 @@ import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.timesheet.model.Project;
 import com.liferay.timesheet.model.TimeEntry;
 import com.liferay.timesheet.service.ProjectLocalService;
@@ -35,11 +36,29 @@ public class AddTimeMVCActionCommand extends BaseMVCActionCommand {
 		long clientId = ParamUtil.getLong(actionRequest, "clientId", 0);
 		long projectId = ParamUtil.getLong(actionRequest, "projectId", 0);
 		double hours = ParamUtil.getDouble(actionRequest, "hours", 1.0);
-		Date date = ParamUtil.getDate(actionRequest, "date", new SimpleDateFormat("MM/dd/yyyy"));
+
+		String dateStr = ParamUtil.getString(actionRequest, "date");
+
+		Date date = new Date();
+
+		if (Validator.isNotNull(dateStr)) {
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+
+			try {
+				date = sdf.parse(dateStr);
+			}catch (Throwable t) {
+
+			}
+		}
+
 		long userId = PortalUtil.getUserId(actionRequest);
 
 		TimeEntry entry = _timeEntryLocalService.addTimeEntry(userId, hours, projectId, 0, true, 0, date, message);
 
+		actionResponse.setRenderParameter("message", "");
+		actionResponse.setRenderParameter("clientId", String.valueOf(clientId));
+		actionResponse.setRenderParameter("hours", "");
+		actionResponse.setRenderParameter("date", "");
 	}
 
 	@Reference
