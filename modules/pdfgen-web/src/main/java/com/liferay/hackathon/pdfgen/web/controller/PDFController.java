@@ -1,4 +1,4 @@
-package com.liferay.hackathon.pdfgen;
+package com.liferay.hackathon.pdfgen.web.controller;
 
 import java.util.Collections;
 import java.util.Set;
@@ -13,9 +13,11 @@ import javax.ws.rs.core.MediaType;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+import com.liferay.hackathon.pdfgen.PdfGenerator;
+
 @Component(immediate = true, service = Application.class)
 @ApplicationPath("/pdf")
-public class PDFGeneratorWS extends Application {
+public class PDFController extends Application {
 	
 	// ==============
     // JAX-RS setup
@@ -29,9 +31,13 @@ public class PDFGeneratorWS extends Application {
 	@Path("/generate")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String generate() {
-		pdfGenerator.generatePdfs("<hackathon>test</hackathon>", "/tmp/hackathon", 10);
+		pdfGenerator.generatePdfs("<html><body>This is certificate number $$IDX$$.</body></html>", "/tmp/hackathon", 10);
 		return "{\"message\":\"ok\"}";
 	}
+	
+	// ==============
+    // References
+    // ==============
 	
     @Reference
 	public void setPdfGenerator(PdfGenerator pdfGenerator) {
@@ -39,5 +45,6 @@ public class PDFGeneratorWS extends Application {
 	}
 
 	private PdfGenerator pdfGenerator;
+	
 
 }

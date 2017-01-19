@@ -55,13 +55,7 @@ provider:
 
 functions:
   hello:
-    handler: handler.pdf
-  liferay:
-    handler: handler.liferay   
-    events:
-      - http:
-          path: liferay/pdf
-          method: get    
+    handler: handler.alexa 
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

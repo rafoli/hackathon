@@ -12,4 +12,5 @@ dependencies {
 	compile group: 'org.apache.santuario', name: 'xmlsec', version: '1.5.1'
 	compile "javax.ws.rs:javax.ws.rs-api:2.0"
 
+
 }
