@@ -31,7 +31,15 @@ public class PDFController extends Application {
 	@Path("/generate")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String generate() {
-		pdfGenerator.generatePdfs("<html><body>This is certificate number $$IDX$$.</body></html>", "/tmp/hackathon", 10);
+		pdfGenerator.generatePdfs("<html><body>This is certificate number $$IDX$$.</body></html>", "/tmp/hackathon", 1000);
+		return "{\"message\":\"ok\"}";
+	}
+	
+	@GET
+	@Path("/remove")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String remove() {
+		pdfGenerator.removePdfs();
 		return "{\"message\":\"ok\"}";
 	}
 	

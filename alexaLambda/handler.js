@@ -45,8 +45,24 @@ var handlers = {
         ]);
     },
     'GeneratingPDF': function () {
-        this.emit(':tell', 'Generating PDF');
+        this.emit(':tell', 'Generating certificates');
     },
+
+    'RemoveCertificatesIntent': function () {
+        var alx = this;
+        async.series([
+            function(callback) {
+              removePdf(callback);
+            },
+            function(callback) {
+              alx.emit('RemovingPDF');
+              callback(null, 'alexa');
+            }
+        ]);
+    },
+    'RemovingPDF': function () {
+        this.emit(':tell', 'Removing certificates');
+    },    
 
     'UsersCountIntent': function () {
         var alx = this;
@@ -57,6 +73,18 @@ var handlers = {
         // optional callback
         }, function(err, results) {
             alx.emit(':tell', 'There are ' + results.users + ' users');
+        });
+    },
+
+    'HealthIntent': function () {
+        var alx = this;
+        async.series({
+            health: function(callback) {
+              healthStatus(callback);
+            }
+        // optional callback
+        }, function(err, results) {
+            alx.emit(':tell', 'I am feeling ' + results.health);
         });
     }
 };
@@ -83,11 +111,53 @@ var generatePdf = function(callback) {
     });  
 }
 
+// Remove PDF
+var removePdf = function(callback) {
+     var options = {
+      url: baseUrl + '/o/api/pdf/remove',
+      headers: {
+        'User-Agent': 'request'
+      }
+    };
+
+
+    request(options, function(error, response, body){
+      if (error)
+        console.log(error)
+      else {
+        var info = JSON.parse(body);
+        console.log(info);
+        callback(null, 'request');
+      }       
+    });  
+}
+
 
 // Users count
 var usersCount = function(callback) {
      var options = {
       url: baseAuthUrl + '/api/jsonws/hack.userscreated/get-users-count',
+      headers: {
+        'User-Agent': 'request'
+      }
+    };
+
+
+    request(options, function(error, response, body){
+      if (error)
+        console.log(error)
+      else {
+        var info = JSON.parse(body);
+        console.log(info);
+        callback(null, info);
+      }       
+    });  
+}
+
+// Health
+var healthStatus = function(callback) {
+     var options = {
+      url: baseAuthUrl + '/api/jsonws/hack.userscreated/get-health-check',
       headers: {
         'User-Agent': 'request'
       }

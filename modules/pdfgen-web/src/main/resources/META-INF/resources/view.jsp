@@ -7,7 +7,11 @@
 	<portlet:param name="mvcPath" value="/view.jsp" />
 </portlet:actionURL>
 
-<div>
+<script type="text/JavaScript">
+    setTimeout("location.reload(true);",5000);
+</script>
+
+<div onload="timer = setTimeout('auto_reload()',10000);">
 	<div class="col-md-10">
 		<liferay-ui:message key="hello.caption" />
 	</div>

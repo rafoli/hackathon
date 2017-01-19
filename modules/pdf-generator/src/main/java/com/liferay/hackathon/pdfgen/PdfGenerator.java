@@ -26,6 +26,13 @@ import com.liferay.portal.kernel.util.StringUtil;
 )
 public class PdfGenerator {
 	private static final Log _log = LogFactoryUtil.getLog(PdfGenerator.class);
+	
+	public void removePdfs() {
+
+		File dir = new File("/tmp/hackathon");
+		FileUtil.deltree(dir);
+
+	}
 
 	public void generatePdfs(final String html, final String path, final int count) {
 
