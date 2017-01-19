@@ -66,11 +66,20 @@ public interface UsersCreatedService extends BaseService {
 	public java.lang.String getUsersAddedInLastHour();
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.lang.String getUsersAddedInLastMinute();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.lang.String getUsersAddedInLastWeek();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.lang.String getUsersAddedInLastXMinutes(int minutes);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.lang.String getUsersAddedSince(java.lang.String since);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.lang.String getUsersAddedSince(Date since);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.lang.String getUsersCount();
 }

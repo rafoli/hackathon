@@ -95,6 +95,47 @@ public class UsersCreatedServiceSoap {
 		}
 	}
 
+	public static java.lang.String getUsersAddedInLastMinute()
+		throws RemoteException {
+		try {
+			java.lang.String returnValue = UsersCreatedServiceUtil.getUsersAddedInLastMinute();
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static java.lang.String getUsersCount() throws RemoteException {
+		try {
+			java.lang.String returnValue = UsersCreatedServiceUtil.getUsersCount();
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static java.lang.String getUsersAddedInLastXMinutes(int minutes)
+		throws RemoteException {
+		try {
+			java.lang.String returnValue = UsersCreatedServiceUtil.getUsersAddedInLastXMinutes(minutes);
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
 	public static java.lang.String getUsersAddedSince(java.lang.String since)
 		throws RemoteException {
 		try {

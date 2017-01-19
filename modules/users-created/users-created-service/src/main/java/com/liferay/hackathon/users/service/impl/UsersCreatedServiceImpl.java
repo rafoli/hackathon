@@ -74,6 +74,22 @@ public class UsersCreatedServiceImpl extends UsersCreatedServiceBaseImpl {
 		return getUsersAddedSince(cal.getTime());
 	}
 
+	public String getUsersAddedInLastMinute() {
+		return getUsersAddedInLastXMinutes(1);
+	}
+
+	public String getUsersCount() {
+		return String.valueOf(userLocalService.getUsersCount());
+	}
+
+	public String getUsersAddedInLastXMinutes(final int minutes) {
+		Calendar cal = Calendar.getInstance();
+
+		cal.add(Calendar.MINUTE, minutes);
+
+		return getUsersAddedSince(cal.getTime());
+	}
+
 	public String getUsersAddedSince(final String since) {
 		// date format is yyyy-mm-dd
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
