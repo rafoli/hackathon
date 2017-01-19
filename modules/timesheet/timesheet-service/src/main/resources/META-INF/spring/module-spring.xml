@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="com.liferay.timesheet.service.impl.ClientLocalServiceImpl" id="com.liferay.timesheet.service.ClientLocalService" />
+	<bean class="com.liferay.timesheet.service.impl.ClientServiceImpl" id="com.liferay.timesheet.service.ClientService" />
+	<bean class="com.liferay.timesheet.service.persistence.impl.ClientPersistenceImpl" id="com.liferay.timesheet.service.persistence.ClientPersistence" parent="basePersistence" />
+	<bean class="com.liferay.timesheet.service.impl.ProjectLocalServiceImpl" id="com.liferay.timesheet.service.ProjectLocalService" />
+	<bean class="com.liferay.timesheet.service.impl.ProjectServiceImpl" id="com.liferay.timesheet.service.ProjectService" />
+	<bean class="com.liferay.timesheet.service.persistence.impl.ProjectPersistenceImpl" id="com.liferay.timesheet.service.persistence.ProjectPersistence" parent="basePersistence" />
+	<bean class="com.liferay.timesheet.service.impl.TaskLocalServiceImpl" id="com.liferay.timesheet.service.TaskLocalService" />
+	<bean class="com.liferay.timesheet.service.impl.TaskServiceImpl" id="com.liferay.timesheet.service.TaskService" />
+	<bean class="com.liferay.timesheet.service.persistence.impl.TaskPersistenceImpl" id="com.liferay.timesheet.service.persistence.TaskPersistence" parent="basePersistence" />
+	<bean class="com.liferay.timesheet.service.impl.TimeEntryLocalServiceImpl" id="com.liferay.timesheet.service.TimeEntryLocalService" />
+	<bean class="com.liferay.timesheet.service.impl.TimeEntryServiceImpl" id="com.liferay.timesheet.service.TimeEntryService" />
+	<bean class="com.liferay.timesheet.service.persistence.impl.TimeEntryPersistenceImpl" id="com.liferay.timesheet.service.persistence.TimeEntryPersistence" parent="basePersistence" />
+	<bean class="com.liferay.timesheet.service.impl.TimesheetLocalServiceImpl" id="com.liferay.timesheet.service.TimesheetLocalService" />
+	<bean class="com.liferay.timesheet.service.impl.TimesheetServiceImpl" id="com.liferay.timesheet.service.TimesheetService" />
+	<bean class="com.liferay.timesheet.service.persistence.impl.TimesheetPersistenceImpl" id="com.liferay.timesheet.service.persistence.TimesheetPersistence" parent="basePersistence" />
+</beans>

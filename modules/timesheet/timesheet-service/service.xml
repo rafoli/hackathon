@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+
+<service-builder package-path="com.liferay.timesheet">
+	<namespace>TIME</namespace>
+
+	<entity name="Timesheet" uuid="false" local-service="true" remote-service="true">
+		<column name="timesheetId" type="long" primary="true" />
+
+		<column name="dateFrom" type="Date" />
+		<column name="userId" type="long" />
+		<column name="dateTo" type="Date" />
+		<column name="approved" type="boolean" />
+		<column name="open" type="boolean" db-name="open_" />
+		<column name="submittedOn" type="Date" />
+		<column name="approvedOn" type="Date" />
+
+		<finder name="UserId" return-type="Collection">
+			<finder-column name="userId" />
+		</finder>
+		<finder name="UserIdOpen" return-type="Collection">
+			<finder-column name="userId" />
+			<finder-column name="open" />
+		</finder>
+	</entity>
+
+	<entity name="TimeEntry" uuid="false" local-service="true" remote-service="true">
+		<column name="timeEntryId" type="long" primary="true" />
+
+		<column name="userId" type="long" />
+		<column name="hours" type="Double" />
+		<column name="projectId" type="long" />
+		<column name="taskId" type="long" />
+		<column name="billable" type="boolean" />
+		<column name="timesheetId" type="long" />
+		<column name="onDate" type="Date" />
+		<column name="message" type="String" db-name="msg_" />
+		
+		<order>
+			<order-column name="userId" />
+			<order-column name="onDate" />
+		</order>
+
+		<finder name="UserId" return-type="Collection">
+			<finder-column name="userId" />
+		</finder>
+		<finder name="UserIdDate" return-type="Collection">
+			<finder-column name="userId" />
+			<finder-column name="onDate" />
+		</finder>
+		<finder name="Timesheet" return-type="Collection">
+			<finder-column name="timesheetId" />
+		</finder>
+	</entity>
+	<entity name="Project" uuid="false" local-service="true" remote-service="true">
+		<column name="projectId" type="long" primary="true" />
+
+		<column name="clientId" type="long" />
+		<column name="name" type="String" />
+		<column name="startsOn" type="Date" />
+		<column name="endsOn" type="Date" />
+		
+		<order>
+			<order-column name="name" />
+		</order>
+
+		<finder name="Client" return-type="Collection">
+			<finder-column name="clientId" />
+		</finder>
+	</entity>
+
+	<entity name="Task" uuid="false" local-service="true" remote-service="true">
+		<column name="taskId" type="long" primary="true" />
+
+		<column name="name" type="String" />
+		<column name="projectId" type="long" />
+
+		<order>
+			<order-column name="name" />
+		</order>
+
+		<finder name="Project" return-type="Collection">
+			<finder-column name="projectId" />
+		</finder>
+	</entity>
+
+	<entity name="Client" uuid="false" local-service="true" remote-service="true">
+		<column name="clientId" type="long" primary="true" />
+
+		<column name="name" type="String" />
+		
+		<order>
+			<order-column name="name" />
+		</order>
+	</entity>
+</service-builder>

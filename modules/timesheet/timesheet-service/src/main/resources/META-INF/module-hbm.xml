@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false" default-lazy="false">
+	<import class="com.liferay.timesheet.model.Client" />
+	<import class="com.liferay.timesheet.model.Project" />
+	<import class="com.liferay.timesheet.model.Task" />
+	<import class="com.liferay.timesheet.model.TimeEntry" />
+	<import class="com.liferay.timesheet.model.Timesheet" />
+	<class name="com.liferay.timesheet.model.impl.ClientImpl" table="TIME_Client">
+		<id name="clientId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.liferay.timesheet.model.impl.ProjectImpl" table="TIME_Project">
+		<id name="projectId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="clientId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="startsOn" type="org.hibernate.type.TimestampType" />
+		<property name="endsOn" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.liferay.timesheet.model.impl.TaskImpl" table="TIME_Task">
+		<id name="taskId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="projectId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="com.liferay.timesheet.model.impl.TimeEntryImpl" table="TIME_TimeEntry">
+		<id name="timeEntryId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="hours" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="projectId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="taskId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="billable" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="timesheetId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="onDate" type="org.hibernate.type.TimestampType" />
+		<property column="msg_" name="message" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.liferay.timesheet.model.impl.TimesheetImpl" table="TIME_Timesheet">
+		<id name="timesheetId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="dateFrom" type="org.hibernate.type.TimestampType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="dateTo" type="org.hibernate.type.TimestampType" />
+		<property name="approved" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property column="open_" name="open" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="submittedOn" type="org.hibernate.type.TimestampType" />
+		<property name="approvedOn" type="org.hibernate.type.TimestampType" />
+	</class>
+</hibernate-mapping>
