@@ -1,0 +1,3 @@
+Bundle-SymbolicName: com.liferay.hackathon.pdf.generator.web
+Bundle-Name: PDF Generator Portlet
+Bundle-Version: 1.0.0
