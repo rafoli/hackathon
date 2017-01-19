@@ -66,10 +66,10 @@ public class TimeEntryLocalServiceImpl extends TimeEntryLocalServiceBaseImpl {
 		return timeEntryPersistence.countByUserId(userId);
 	}
 	public List<TimeEntry> findByTimesheet(final long timesheetId) {
-		return timeEntryPersistence.findByTimesheet(userId);
+		return timeEntryPersistence.findByTimesheet(timesheetId);
 	}
 	public long countByTimesheet(final long timesheetId) {
-		return timeEntryPersistence.countByTimesheet(userId);
+		return timeEntryPersistence.countByTimesheet(timesheetId);
 	}
 	public List<TimeEntry> findByUserDate(final long userId, final Date onDate) {
 		return timeEntryPersistence.findByUserIdDate(userId, onDate);
