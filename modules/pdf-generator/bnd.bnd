@@ -18,4 +18,3 @@ Bundle-ClassPath:\
 Import-Package: !org.bouncycastle.asn1, \
  !org.bouncycastle.*, \
  *
-
