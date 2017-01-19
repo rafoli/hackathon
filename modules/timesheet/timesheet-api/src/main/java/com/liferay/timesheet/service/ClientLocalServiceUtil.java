@@ -79,6 +79,11 @@ public class ClientLocalServiceUtil {
 		return getService().addClient(client);
 	}
 
+	public static com.liferay.timesheet.model.Client addClient(
+		java.lang.String name) {
+		return getService().addClient(name);
+	}
+
 	/**
 	* Creates a new client with the primary key. Does not add the client to the database.
 	*
